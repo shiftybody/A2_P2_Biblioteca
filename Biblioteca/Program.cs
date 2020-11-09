@@ -87,7 +87,37 @@ namespace Biblioteca
                             String consulta = lectura.ReadToEnd();
                             lectura.Close();
 
+                            string[] librero = consulta.Split('\n'); // recordar no puedo imprimir asi como asi los datos de un string tenemos que pasarlos por un for
 
+
+                            Console.Write("    Porfavor ingrese el nombre del libro: ");
+                            string nombre = Console.ReadLine();
+
+                            for ( int x=0 ; x < librero.Length - 1 ; x++)
+                            {
+
+                                string[] lib = librero[x].Split(',');
+
+                                if (lib[0].Trim().Equals(nombre))
+                                {
+                                    Console.WriteLine("Se encontro el valor" + '\n');
+
+
+                                    Console.WriteLine("   > NOMBRE: " + lib[0]);
+                                    Console.WriteLine("   > AUTOR: " + lib[1]);
+                                    Console.WriteLine("   > ISBN: " + lib[2]);
+                                    Console.WriteLine("   > EDITORIAL: " + lib[3]);
+                                    Console.WriteLine("   > AÑO DE PUBLICACIÓN: " + lib[4]);
+                                    Console.WriteLine("   > LUGAR DE PUBLICACIÓN: " + lib[5]);
+                                    Console.WriteLine("   > GENERO: " + lib[6]);
+                                    Console.WriteLine("   > NÚMERO DE PÁGINAS: " + lib[7] + '\n');
+
+                                }
+                                else
+                                {
+                                    
+                                }
+                            }
 
                             break;
                         }
