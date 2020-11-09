@@ -26,9 +26,6 @@ namespace Biblioteca
             string libro;
             string ruta = @"C:\Users\david\Documents\IntProg\A1_P2 - Biblioteca\DB\libros.txt";
 
-            StreamReader lectura = File.OpenText(ruta);
-            String libros = lectura.ReadToEnd();
-            lectura.Close();
 
             do
             {
@@ -86,6 +83,10 @@ namespace Biblioteca
                             Console.Clear();
                             Console.WriteLine("----------- BUSCAR LIBRO -----------" + '\n');
 
+                            StreamReader lectura = File.OpenText(ruta);
+                            String consulta = lectura.ReadToEnd();
+                            lectura.Close();
+
 
 
                             break;
@@ -95,9 +96,10 @@ namespace Biblioteca
                             Console.Clear();
                             Console.WriteLine("----------- LIBROS ALMACENADOS -----------" + '\n');
 
-                            lectura = File.OpenText(ruta);
+                            StreamReader lectura = File.OpenText(ruta);
                             String consulta = lectura.ReadToEnd();
                             lectura.Close();
+
                             string[] librero = consulta.Split('\n'); // recordar no puedo imprimir asi como asi los datos de un string
 
 
@@ -115,23 +117,7 @@ namespace Biblioteca
                                     Console.WriteLine("   > NÚMERO DE PÁGINAS: " + lib[7] + '\n');
 
                             }
-
-
-                            /*for (int x = 0; x < consulta.Length; x++)
-                            {                                
-
-                                Console.Write("   > NOMBRE: " + datos[x]);           
-                                Console.Write("   > AUTOR: " + datos[x]);
-                                Console.Write("   > ISBN: " + datos[x]);
-                                Console.Write("   > EDITORIAL: " + datos[x]);
-                                Console.Write("   > AÑO DE PUBLICACIÓN: " + datos[x]);
-                                Console.Write("   > LUGAR DE PUBLICACIÓN: " + datos[x]);
-                                Console.Write("   > GENERO: " + datos[x]);
-                                Console.Write("   > NÚMERO DE PÁGINAS: " + datos[x]);
-
-                            }*/
-
-
+                        
                             break;
                         }
                     default:
@@ -141,22 +127,13 @@ namespace Biblioteca
                         }
                 }
 
-                if(control == 1)
-                {
-                    Console.Clear();
-                }
-                else
-                {
+
                     Console.WriteLine( '\n' + "Ingrese 0 para salir de la aplicación o Ingrese 1 para mostrar nuevamente el menu");
                     control = byte.Parse(Console.ReadLine());
                     Console.Clear();
-                }
 
-
-           
 
             } while (control != 0);
-
 
         }
     }
