@@ -23,13 +23,12 @@ namespace Biblioteca
 
             byte control = 0;
 
-            string libro ;
+            string libro;
+            string ruta = @"C:\Users\david\Documents\IntProg\A1_P2 - Biblioteca\DB\libros.txt";
 
-            StreamReader lectura = File.OpenText(@"C:\Users\david\Documents\INT PROG\A1_P2 - Biblioteca\DBlibros.txt");
+            StreamReader lectura = File.OpenText(ruta);
             String libros = lectura.ReadToEnd();
             lectura.Close();
-
-            string ruta = @"C:\Users\david\source\repos\Biblioteca\DB\libros.txt";
 
             do
             {
@@ -48,6 +47,7 @@ namespace Biblioteca
                 {
                     case 1:
                         {
+
                             Console.Clear();
                             Console.WriteLine("    ----------- AGREGAR LIBRO -----------" + '\n');
                             
@@ -98,8 +98,38 @@ namespace Biblioteca
                             lectura = File.OpenText(ruta);
                             String consulta = lectura.ReadToEnd();
                             lectura.Close();
+                            string[] librero = consulta.Split('\n'); // recordar no puedo imprimir asi como asi los datos de un string
 
-                            Console.WriteLine(consulta);           
+
+                            for ( int x=0 ; x < librero.Length - 1 ; x++)
+                            {
+                                    string[] lib = librero[x].Split(','); 
+
+                                    Console.WriteLine("   > NOMBRE: " + lib[0]);
+                                    Console.WriteLine("   > AUTOR: " + lib[1]);
+                                    Console.WriteLine("   > ISBN: " + lib[2]);
+                                    Console.WriteLine("   > EDITORIAL: " + lib[3]);
+                                    Console.WriteLine("   > AÑO DE PUBLICACIÓN: " + lib[4]);
+                                    Console.WriteLine("   > LUGAR DE PUBLICACIÓN: " + lib[5]);
+                                    Console.WriteLine("   > GENERO: " + lib[6]);
+                                    Console.WriteLine("   > NÚMERO DE PÁGINAS: " + lib[7] + '\n');
+
+                            }
+
+
+                            /*for (int x = 0; x < consulta.Length; x++)
+                            {                                
+
+                                Console.Write("   > NOMBRE: " + datos[x]);           
+                                Console.Write("   > AUTOR: " + datos[x]);
+                                Console.Write("   > ISBN: " + datos[x]);
+                                Console.Write("   > EDITORIAL: " + datos[x]);
+                                Console.Write("   > AÑO DE PUBLICACIÓN: " + datos[x]);
+                                Console.Write("   > LUGAR DE PUBLICACIÓN: " + datos[x]);
+                                Console.Write("   > GENERO: " + datos[x]);
+                                Console.Write("   > NÚMERO DE PÁGINAS: " + datos[x]);
+
+                            }*/
 
 
                             break;
